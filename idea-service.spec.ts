@@ -46,7 +46,7 @@ test('get all by type', () => {
         references: ["foo"]
     }, { type: "Concept", notifyOnUpdate: ['references'] })
 
-    const storeConcept = ideaService.getAllByType<Concept>("Concept")
+    const storeConcept = ideaService.getAllByType<Concept, string>("Concept")
     expect(concept).toEqual(storeConcept.shift())
 });
 
@@ -60,7 +60,7 @@ test('idea got update', () => {
     concept.title = "ToDo new title"
     ideaService.update(concept)
 
-    const updatedConcept = ideaService.getAllByType<Concept>("Concept")
+    const updatedConcept = ideaService.getAllByType<Concept, string>("Concept")
     const item = updatedConcept.shift()
     expect(item?.title).toEqual("ToDo new title")
 });
@@ -82,7 +82,7 @@ test('idea got update and notified', () => {
     basicIdeaClone.description = "BasicIdea new description"
     ideaService.update(basicIdeaClone)
 
-    const updatedConcept = ideaService.getAllByType<Concept>("BasicIdea")
+    const updatedConcept = ideaService.getAllByType<Concept, string>("BasicIdea")
     const item = updatedConcept.shift()
 
     expect(notificationService.notify).toHaveBeenCalledTimes(2);

@@ -45,9 +45,9 @@ export abstract class Idea {
 }
 
 export class BasicIdea extends Idea {
-  public update(ideaProps: BasicIdeaType): BasicIdea {
-    this._title = ifUndefinedUseSecondParam<string>(ideaProps.title, this._title)
-    this._description = ifUndefinedUseSecondParam<string>(ideaProps.description, this._description)
+  public update(basicIdea: BasicIdeaType): BasicIdea {
+    this._title = ifUndefinedUseSecondParam<string>(basicIdea.title, this._title)
+    this._description = ifUndefinedUseSecondParam<string>(basicIdea.description, this._description)
     return this
   }
 }

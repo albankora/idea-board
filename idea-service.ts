@@ -56,7 +56,7 @@ export class IdeaService {
     
     Use `repository` to fetch ideas.
   */
-  getAllByType<T>(type: any): Array<T> {
+  getAllByType<T, L>(type: L): Array<T> {
     const ideas = this.repository.filter(function (idea) {
       return idea.type === type
     })
